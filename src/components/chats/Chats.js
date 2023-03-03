@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import './Chats.css';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { collection, doc, getDoc, getDocs, onSnapshot, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
@@ -82,6 +82,17 @@ const Chats = () => {
         dispatch({ type: "CHANGE_USER", payload: u });
     };
 
+    function toDateTime(secs) {
+        var t = new Date(); // Epoch
+        t.setSeconds(secs);
+        const d = t.toLocaleDateString(secs)
+        return d;
+    }
+
+    const callDate = useCallback(toDateTime, []);
+    // Object.entries(chats).map((c)=>{
+    //     console.log(c[1]?.lastMessage?.text?.length)
+    // })
     return (
         <div className='chats'>
             <h1>Chats</h1>
@@ -92,25 +103,26 @@ const Chats = () => {
 
             {/* SEARCHED USER **********************************************************/}
             {err && "User Not Found"}
-            {user && <div className='left-chat-view' onClick={()=>handleSelect(user)}>
-                <div>
+            {user && <div className='left-chat-view' onClick={() => handleSelect(user)}>
+                <div className='short-chat'>
                     <img src={user?.photoURL} alt='...' className='user-img' />
-                </div>
-                <div className='msg-field'>
-                    <h5>{user?.displayName}</h5>
-                    <p >Lorem ipsum dolor sit amet, </p>
+
+                    <div>
+                        <h5>{user?.displayName}</h5>
+                        {/* <p >Lorem ipsum dolor sit amet, </p> */}
+                    </div>
                 </div>
                 <div className='time-field'>
-                    <div className='time'>3:45pm</div>
+                    <div className='time'>2/6/2024</div>
                     <div className='msg-count'>1</div>
                 </div>
             </div>}
             <hr />
 
             {/* OTHER USERS *******************************************************************/}
-            {chats?(Object.entries(chats)?.sort((a,b)=>b[1].date-a[1].date)?.map((chat) => (
+            {chats ? (Object.entries(chats)?.sort((a, b) => b[1].date - a[1].date)?.map((chat) => (
                 <div className='left-chat-view' key={chat[0]}
-                onClick={() => handleClick(chat[1]?.userInfo)}  >
+                    onClick={() => handleClick(chat[1]?.userInfo)}  >
                     <div className='short-chat'>
                         <img src={chat[1]?.userInfo?.photoURL} alt='...' className='user-img' />
                         <div className='msg-field'>
@@ -119,10 +131,11 @@ const Chats = () => {
                         </div>
                     </div>
                     <div className='time-field'>
-                        <div className='time'>3:45pm</div>
-                        <div className='msg-count'>1</div>
+                        {/* <div className='time'>{callDate(chat[1].date.seconds)?.getHours()}:{callDate(chat[1].date.seconds)?.getMinutes()}:{callDate(chat[1].date.seconds)?.getDay()} </div> */}
+                        <div className='time'>{chat[1]?.date?.seconds ? (callDate(chat[1]?.date?.seconds)) : ("2/6/2024")}</div>
+                        {chat[1]?.lastMessage ? (<div className='msg-count'>{chat[1]?.lastMessage?.text?.length}</div>) : (<div></div>)}
                     </div>
-                </div>))):(<div className='no-user'>Search the users</div>)}
+                </div>))) : (<div className='no-user'>Search the users</div>)}
         </div>
     )
 }

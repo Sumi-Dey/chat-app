@@ -22,6 +22,11 @@
     background-color: #CE7777;
     max-width: max-content;
     color: white;
+}
+.owner-text{
+    border-radius: 10px 10px 10px 0px;
+}
+.receiver-text{
     border-radius: 10px 10px 0px 10px;
 }
 

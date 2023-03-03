@@ -26,15 +26,16 @@
     flex-direction: column;
     gap: 3px;
 }
-.chat-name>span:nth-of-type(1){
+.chat-name>span{
     font-size: 17.6px;
     font-weight: bold;
     font-family: 'Bree Serif', serif;
+    text-transform: capitalize;
 }
-.chat-name>span:nth-of-type(2){
+/* .chat-name>span:nth-of-type(2){
     color: rgb(175, 175, 175);
     font-size: 13px;
-}
+} */
 .chat-nav-right{
     display: flex;
     gap: 23px;
@@ -78,9 +79,11 @@
     cursor: pointer;
 }
 .no-msg{
-    flex: 3;
     text-align: center;
     margin-top: 13rem;
     font-size: 40px;
     color: #ce7777b5;
+}
+.no-chat-nav{
+    min-height: 50px;
 }

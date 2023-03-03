@@ -15,7 +15,7 @@ const Messages = ({message}) => {
     <div className='scroll'>
     <div className={message.senderId === currentUser.uid ? "messages " :"messages owner"} ref={ref} >
       <div className='msg-info'>
-      {message?.text &&<div className='user-send-text'>{message.text}</div>}
+      {message?.text &&<div className={message.senderId === currentUser.uid ?"user-send-text receiver-text":"user-send-text owner-text"}>{message.text}</div>}
         <div className='user-send-msg'>
         {message?.img && <img src={message?.img} alt='...'/>}
         </div>

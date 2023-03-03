@@ -25,7 +25,7 @@ const Chat = () => {
     const unsub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
       doc.exists() && setMessages(doc.data().messages)
     })
-    return ()=>{ unsub() }
+    return () => { unsub() }
   }, [data.chatId])
   const handleSend = async () => {
     if (img) {
@@ -75,38 +75,39 @@ const Chat = () => {
       },
       [data.chatId + ".date"]: serverTimestamp(),
     });
-  setText("");
-  setImg(null)
+    setText("");
+    setImg(null)
   };
   return (
     <>
-    {messages.length>0?(<div className='chat'>
-      <div className='chat-nav'>
-        <div className='chat-nav-left'>
-          <div><img src={data?.user?.photoURL} className='chat-img' alt='...' /></div>
-          <div className='chat-name'><span>{data?.user?.displayName} </span><span>Last seen 3 hours ago</span></div>
-        </div>
-        <div className='chat-nav-right'>
-          <MdCall className='chat-icon' size={25} />
-          <BsFillCameraVideoFill className='chat-icon' size={25} />
-          <BsThreeDots className='chat-icon' size={25} />
-        </div>
+      <div className='chat'>
+        {data?.user.displayName?(<div className='chat-nav'>
+          <div className='chat-nav-left'>
+            <div><img src={data?.user?.photoURL} className='chat-img' alt='...' /></div>
+            <div className='chat-name'><span>{data?.user?.displayName} </span></div>
+          </div>
+          <div className='chat-nav-right'>
+            <MdCall className='chat-icon' size={25} />
+            <BsFillCameraVideoFill className='chat-icon' size={25} />
+            <BsThreeDots className='chat-icon' size={25} />
+          </div>
+        </div>):(<div className='no-chat-nav'></div>)}
+        {data?.user.displayName?(<div className='main-chat'>
+          {messages.map((m) => (<Messages message={m} key={m.id} />))}
+        </div>):(<div className='no-msg'>Please select user for chat</div>)}
+        {data?.user.displayName?(<div className='chat-box'>
+          <input type='file' id='file' style={{ display: 'none' }} onChange={(e) => setImg(e.target.files[0])} />
+          <label htmlFor="file" className='chat-icon'>
+            <ImAttachment size={21} />
+          </label>
+          <input type='text' placeholder='Type a messege here...' className='text' onChange={(e) => setText(e.target.value)} value={text}
+          />
+          <BsFillEmojiSmileFill size={21} className='chat-icon' />
+          <IoMdDownload size={21} className='chat-icon' />
+          <RiSendPlaneFill size={45} className='chat-send' onClick={handleSend} />
+        </div>):(<div className='no-chat-nav'></div>)}
       </div>
-      <div className='main-chat'>
-        {messages.map((m) => (<Messages message={m} key={m.id} />))}
-      </div>
-      <div className='chat-box'>
-        <input type='file' id='file' style={{ display: 'none' }} onChange={(e) => setImg(e.target.files[0])}/>
-        <label htmlFor="file" className='chat-icon'>
-          <ImAttachment size={21}  />
-        </label>
-        <input type='text' placeholder='Type a messege here...' className='text' onChange={(e) => setText(e.target.value)} value={text}
-        />
-        <BsFillEmojiSmileFill size={21} className='chat-icon' />
-        <IoMdDownload size={21} className='chat-icon' />
-        <RiSendPlaneFill size={45} className='chat-send' onClick={handleSend} />
-      </div>
-    </div>):(<div className='no-msg'>Select user for chat</div>)}
+      {/* (<div className='no-msg'>Select user for chat</div>) */}
     </>
   )
 }

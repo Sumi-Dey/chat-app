@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Register.css';
 import { BsFillImageFill } from 'react-icons/bs';
 import { HiUserCircle } from 'react-icons/hi';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
+import { RxCrossCircled } from 'react-icons/rx';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage, db } from '../../firebase'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -13,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
+  const [err, setErr] = useState(false);
   const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,11 +51,15 @@ const Register = () => {
         }
       );
     } catch (error) {
-      console.log(error)
+      setErr(true)
     }
   }
   return (
     <div className='main'>
+      {err && <div className='err'>
+        <h3>{err && ("User already exist")} </h3>
+        <RxCrossCircled size={19} className="cross" onClick={()=>setErr(false)} />
+      </div>}
       <h1 className='reg-head'>Step into a world of endless conversations with Chatmosphere</h1>
       <p className='reg-tag'>Chatting just got better for you with us</p>
       <div className='register'>
