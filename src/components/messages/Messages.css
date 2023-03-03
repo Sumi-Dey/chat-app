@@ -1,0 +1,38 @@
+.messages {
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.msg-info {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.owner {
+    flex-direction: row-reverse;
+}
+
+.user-send-text {
+    padding: 8px;
+    background-color: #CE7777;
+    max-width: max-content;
+    color: white;
+    border-radius: 10px 10px 0px 10px;
+}
+
+.user-send-msg>img {
+    width: 20rem;
+}
+
+.msg-user {
+    color: rgb(102 96 96);
+}
+/* .scroll{
+    overflow: scroll;
+    max-height: 30rem;
+} */

@@ -1,0 +1,86 @@
+.chat{
+    flex: 3;
+}
+.chat-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px #645e5e75;
+    padding: 7.3px 25px;
+    margin-top: 10px;
+}
+.chat-nav-left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.chat-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.chat-name{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.chat-name>span:nth-of-type(1){
+    font-size: 17.6px;
+    font-weight: bold;
+    font-family: 'Bree Serif', serif;
+}
+.chat-name>span:nth-of-type(2){
+    color: rgb(175, 175, 175);
+    font-size: 13px;
+}
+.chat-nav-right{
+    display: flex;
+    gap: 23px;
+}
+.chat-icon{
+    color: rgb(175, 175, 175);
+    cursor: pointer;
+}
+.main-chat{
+    overflow-y: scroll;
+    max-height: 30rem;
+}
+.main-chat::-webkit-scrollbar{
+    display: none;
+}
+.chat-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px #645e5e75;
+    padding: 7.3px 25px;
+    position: fixed;
+    bottom: 0; 
+}
+.text{
+    border: none;
+    width: 48rem;
+}
+.text::placeholder{
+    font-family: 'Bree Serif', serif;
+    font-size: 15px;
+    color: rgb(175, 175, 175);
+}
+.text:focus{
+    outline: none;
+}
+.chat-send{
+    color: #2B3A55;
+    cursor: pointer;
+}
+.no-msg{
+    flex: 3;
+    text-align: center;
+    margin-top: 13rem;
+    font-size: 40px;
+    color: #ce7777b5;
+}

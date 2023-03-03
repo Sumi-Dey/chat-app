@@ -1,0 +1,83 @@
+.chats{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18.5px;
+    background-color: #e3e5f34f;
+}
+
+h1{
+    font-family: 'Bree Serif', serif;
+}
+.search{
+    display: flex;
+    align-items: center;
+    padding: 8.8px;
+    box-shadow: 5px 0 10px 0 #645e5e75;
+    border-radius: 17px;
+    gap: 4px;
+    background-color: white;
+}
+.search-input{
+    color: rgb(175, 175, 175);
+}
+.search-field{
+    border: none;
+    font-size: 14.2px;
+}
+.search-field:focus{
+    outline: none;
+}
+.left-chat-view{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 5px 0 10px 0 #645e5e75;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    justify-content: space-between;
+}
+.left-chat-view:hover{
+box-shadow: 5px 0 10px 0 #704c4c;
+}
+
+.short-chat{
+    display: flex;
+    gap: 18px;
+}
+.msg-field{
+    display: flex;
+    flex-direction: column;
+    gap: 4.5px;
+}
+.msg-field>h5{
+    font-size: 15px;
+}
+.msg-field>p{
+    font-size: 14.8px;
+    color: rgb(102 96 96);
+}
+.time-field{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+.time{
+    font-size: 13.5px;
+    color: rgb(102 96 96);
+}
+.msg-count{
+    color: white;
+    background-color: #CE7777;
+    border-radius: 50%;
+    width: fit-content;
+    padding: 2.1px 6.2px;
+}
+.no-user{
+    text-align: center;
+    font-size: 24px;
+    color: #CE7777;
+}

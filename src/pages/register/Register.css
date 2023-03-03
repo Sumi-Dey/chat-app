@@ -1,0 +1,111 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+}
+.reg-head{
+    color: #2B3A55;
+    text-transform: capitalize;
+    text-align: center;
+}
+.reg-tag{
+    font-size: 20.6px;
+    color: gray;
+    text-align: center;
+}
+.register {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 7rem;
+    margin-top: 40px;
+}
+.left-reg{
+    flex: 1;
+}
+.right-reg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 26px 0;
+    background-color: white;
+    border-radius: 30px;
+    padding: 26px;
+    margin-top: 40px;
+    /* box-shadow: 0px 0px 10px 20px #d0c9c97d; */
+}
+.box{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    background-color: #ce777773;
+    border-radius: 30px;
+    height: 450.9px;
+    box-shadow: 0px 0px 10px 20px #d0c9c97d;
+}
+.reg-logo{
+    width: 24rem;
+}
+
+.reg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8.3px;
+}
+.reg-input{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.reg-input>input {
+    padding: 15px;
+    border: none;
+    width: 250px;
+    border-bottom: 1px solid #CE7777;
+}
+.reg-input>input::placeholder{
+    font-family: 'Bree Serif', serif;
+    font-size: 15px;
+    color: rgb(175, 175, 175);
+}
+.reg-input>input:focus{
+    outline: none;
+}
+.btn{
+    padding: 6px;
+    border: none;
+    color: white;
+    background-color: #CE7777;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.head{
+    font-family: 'Bree Serif', serif;
+    color: #2B3A55;
+    font-size: 25px;
+    font-weight: bold;
+    
+}
+.logo{
+    font-family: 'Bree Serif', serif;
+    font-size: 20px;
+    color: #CE7777;
+}
+.r-label{
+    display: flex;
+    align-items: center;
+    gap: 11.5px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.icon{
+    color: rgb(175, 175, 175);
+}
+.r-label>span{
+    color: rgb(175, 175, 175);
+}
